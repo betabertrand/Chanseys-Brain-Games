@@ -11,7 +11,7 @@ This is a memory game that will display a text and prompt you to input what was 
 
 //chansey mini game
 
-
+#include "chansey functions.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -26,77 +26,6 @@ This is a memory game that will display a text and prompt you to input what was 
 
 
 using namespace std;
-
-static const char UDLR[] = "UDLR";
-static const char allnumb[] = "1234567890";
-static const char allchar[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-static const char SLR[] = "SLR";
-
-int stringLength = sizeof(UDLR) - 1;
-int stringLength1 = sizeof(allnumb) - 1;
-int stringLength2 = sizeof(allchar) - 1;
-int stringLength3 = sizeof(SLR) - 1;
-
-char genRandom1()
-{
-	return UDLR[rand() % stringLength];
-
-}
-
-char genRandom2()
-{
-	return allnumb[rand() % stringLength1];
-}
-
-char genRandom3()
-{
-	return allchar[rand() % stringLength2];
-}
-
-char genRandom4()
-{
-	return SLR[rand() % stringLength3];
-}
-
-
-using std::chrono::milliseconds;
-
-void delayed_out(const std::string& message,
-	milliseconds letter_delay = milliseconds(300),
-	milliseconds disappearance_delay = milliseconds(10000))
-{
-	const std::size_t msgLen = message.length();
-	const std::string erasure_string = std::string(msgLen, '\b') +
-		std::string(msgLen, ' ') + std::string(msgLen, '\b');
-
-	std::size_t msgIdx = 0;
-
-	while (msgIdx != msgLen)
-	{
-		std::cout << message[msgIdx++];
-		std::this_thread::sleep_for(letter_delay);
-	}
-
-	std::this_thread::sleep_for(disappearance_delay);
-	std::cout << erasure_string;
-
-}
-
-void delayed_out1(const std::string& message,
-	milliseconds letter_delay = milliseconds(75))
-{
-	const std::size_t msgLen = message.length();
-	const std::string erasure_string = std::string(msgLen, '\b') +
-		std::string(msgLen, ' ') + std::string(msgLen, '\b');
-
-	std::size_t msgIdx = 0;
-
-	while (msgIdx != msgLen)
-	{
-		std::cout << message[msgIdx++];
-		std::this_thread::sleep_for(letter_delay);
-	}
-}
 
 
 int main()
@@ -129,6 +58,7 @@ int main()
 
 	std::string cmmstory;
 	std::string cmmName;
+	std::string forfun;
 
 
 	std::string eStr1;
@@ -167,55 +97,9 @@ int main()
 
 
 
-
-	/*for (unsigned int i = 1; i < 2; ++i)
-	{
-		eStr1 += genRandom1();
-		eStr2 += genRandom1();
-		eStr3 += genRandom1();
-		eStr4 += genRandom1();
-		eStr5 += genRandom1();
-		eStr6 += genRandom1();
-		eStr7 += genRandom1();
-		eStr8 += genRandom1();
-		eStr9 += genRandom1();
-		eStr10 += genRandom1();
-
-
-		mStr1 += genRandom2();
-		mStr2 += genRandom2();
-		mStr3 += genRandom2();
-		mStr4 += genRandom2();
-		mStr5 += genRandom2();
-		mStr6 += genRandom2();
-		mStr7 += genRandom2();
-		mStr8 += genRandom2();
-		mStr9 += genRandom2();
-		mStr10 += genRandom2();
-
-		hStr1 += genRandom3();
-		hStr2 += genRandom3();
-		hStr3 += genRandom3();
-		hStr4 += genRandom3();
-		hStr5 += genRandom3();
-		hStr6 += genRandom3();
-		hStr7 += genRandom3();
-		hStr8 += genRandom3();
-		hStr9 += genRandom3();
-		hStr10 += genRandom3();
-
-	}*/
-
 	//write file pointer
 	ofstream outfile;
 
-	
-	/*//make highscore folder
-	outfile.open("BRAIN GAME HIGHSCORES.txt", ios::app);
-
-	outfile << "CHANSEY MEMORY GAME HIGHSCORES.\n\n";
-
-	outfile.close();*/
 
 	//introduce program
 
@@ -231,62 +115,7 @@ int main()
 
 	cout << "\nWELCOME TO \nCHANSEY'S BRAIN GAMES!\n\n";
 
-	//prompt user to enter the date
-	//cout << "Please Enter the date.\n\n";
 
-	
-	
-
-	
-	
-	/* was going to prompt for date but then i found the way to auto generate the date
-	{
-		//prompt user for month
-		cout << "Enter Month: ";
-		cin >> month;
-		cout << endl;
-
-
-
-
-		if (month > 12 || month <1)
-			//display invalid
-			cout << "Invalid. Month must be between 1 and 12. Enter month again.\n\n";
-
-	} while (month > 12 || month <1);
-
-	do
-	{
-		//prompt user for day
-		cout << "Enter Day: ";
-		cin >> day;
-		cout << endl;
-
-
-
-		if (day > 31 || day < 1)
-			//display invalid
-			cout << "Invalid. Day must be between 1 and 31. Enter day again.\n\n";
-
-
-	} while (day > 31 || day < 1);
-
-	do
-	{
-		//prompt user for year
-		cout << "Enter Year: ";
-		cin >> year;
-		cout << endl;
-
-
-
-		if (year < 2016)
-			//display invalid
-			cout << "Invalid. Year must be from 2016 or above. Enter year again.\n\n";
-
-
-	} while (year < 2016);
-	*/
 
 	do
 	{
@@ -329,7 +158,7 @@ int main()
 							//show rules
 							cmmstory = "You wake up. Its raining and it seems that you have been dropped \nin the middle of in a maze but you have no recollection of how you have gotten there.\nYou frantically start to run aroound through the maze desperately searching for \na way out with no avail.It starts to pour but there is no where to take shelter so you lay down \non the grass looking to the sky. Suddenly! You see a flash of lightning erupts through the sky.\nThe light that is emitted from the lightning seems to resemble a map. Seeing that this is the only \nclue that you have been able to find. You start to memorize the map as it quickly starts to fade. This is \nyour only chance at escape, so you better hope you remebered the map!!\n\n";
 
-							std::string forfun = "It looked like it said \"its dangerous to go alone\" at the bottom of the skymap but it's to faint to be sure.";
+							forfun = "It looked like it said \"its dangerous to go alone\" at the bottom of the skymap but it's to faint to be sure.";
 
 
 
