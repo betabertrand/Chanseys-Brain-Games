@@ -11,7 +11,11 @@ This is a memory game that will display a text and prompt you to input what was 
 
 //chansey mini game
 
-#include "chansey functions.h"
+//header files
+#include "chanseyfunctions.h"
+#include "chanseystructure.h"
+
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -27,6 +31,8 @@ This is a memory game that will display a text and prompt you to input what was 
 
 using namespace std;
 
+const int SIZE=11;
+
 
 int main()
 {
@@ -36,15 +42,36 @@ int main()
 	//string Str1=" ", Str2=" ", Str3=" ", Str4=" ", Str5=" ", Str6=" ", Str7=" ", Str8=" ", Str9=" ", Str10=" ";
 	//for chansey game
 	char menuchoice = ' ', difchoice2 = ' ', playagain= ' ';
-	string gc1, gc2, gc3, gc4, gc5, gc6, gc7, gc8, gc9, gc10, ceName;
-	int escore = 0, mscore = 0, hscore = 0, ehighscore = 0, mhighscore = 0, hhighscore = 0, month = 0, day = 0, year = 0;
-
+	string ceName;
+	//int escore = 0, mscore = 0, hscore = 0, ehighscore = 0, mhighscore = 0, hhighscore = 0, month = 0, day = 0, year = 0;
+	Game1 game1output[SIZE];
+	Random randomgen[SIZE];
+	Playagain Pg;
+	Gamechoice game[SIZE];
+	Gamescore score;
 
 
 
 	//do delayed output and random string generator code
 	srand(time(0));
 
+	game1output[1].output="It Looks like youre going the right way\n\n";
+	game1output[2].output="You're doing well, you may continue.\n\n";
+	game1output[3].output="You seem to be remebering the map, keep going before you forget.\n\n";
+	game1output[4].output="Be glad this isnt a dead end. Youre getting closer.\n\n";
+	game1output[5].output="Good thing you didnt choose to go the other way, it mightve led you to your doom.\n\n";
+	game1output[6].output="It feels like youre close. KEEP GOING!!!\n\n";
+	game1output[7].output="Many would not have made it this far, May the odds be ever in your favor.\n\n";
+	game1output[8].output="I hope your memory doesn't fail you now. Keep it up.\n\n";
+	game1output[9].output="This is the moment of truth. If you go the wrong way now, you'll be lost forever.\n\n";
+	game1output[10].output="THE MAP WORKED. YOU'RE FREE.\n\nCONGRADULATIONS!!\n\n";
+
+
+
+
+
+
+	/*
 	std::string cmmStr1;
 	std::string cmmStr2;
 	std::string cmmStr3;
@@ -55,12 +82,16 @@ int main()
 	std::string cmmStr8;
 	std::string cmmStr9;
 	std::string cmmStr10;
+	*/
+
+	
+
 
 	std::string cmmstory;
 	std::string cmmName;
 	std::string forfun;
 
-
+	/*
 	std::string eStr1;
 	std::string eStr2;
 	std::string eStr3;
@@ -71,8 +102,11 @@ int main()
 	std::string eStr8;
 	std::string eStr9;
 	std::string eStr10;
+	*/
 
+	//Random.eString[SIZE]
 
+	/*
 	std::string mStr1;
 	std::string mStr2;
 	std::string mStr3;
@@ -94,7 +128,11 @@ int main()
 	std::string hStr8;
 	std::string hStr9;
 	std::string hStr10;
+	*/
 
+	//Random.mString[SIZE]
+
+	//Random.hString[SIZE]
 
 
 	//write file pointer
@@ -188,6 +226,16 @@ int main()
 							{
 
 								//generate the randoms
+								int x = 1;
+								for (unsigned int i = 1; i < SIZE; ++i)
+								{
+									
+									randomgen[x].cmmString = genRandom4();
+									x++;
+								}
+
+
+								/*
 								cmmStr1 = genRandom4();
 								cmmStr2 = genRandom4();
 								cmmStr3 = genRandom4();
@@ -198,188 +246,45 @@ int main()
 								cmmStr8 = genRandom4();
 								cmmStr9 = genRandom4();
 								cmmStr10 = genRandom4();
+								*/
+
 
 								delayed_out1("And so ");
 								delayed_out1(ceName);
 								delayed_out1(" Your Journey Begins......");
 								cout << endl << endl;
 
-								delayed_out(cmmStr1 + " " + cmmStr2 + " " + cmmStr3 + " " + cmmStr4 + " " + cmmStr5 + " " + cmmStr6 + " " + cmmStr7 + " " + cmmStr8 + " " + cmmStr9 + " " + cmmStr10);
+								delayed_out(randomgen[1].cmmString + " " + randomgen[2].cmmString + " " + randomgen[3].cmmString + " " + randomgen[4].cmmString + " " + randomgen[5].cmmString + " " + randomgen[6].cmmString + " " + randomgen[7].cmmString + " " + randomgen[8].cmmString + " " + randomgen[9].cmmString + " " + randomgen[10].cmmString);
 
 
 								cout << "SkyMap Key:   S= Straight   L= Left    R= Right\n\n";
 
-
-
-								do
+								for (int i=1; i < SIZE; i++)
 								{
-									cout << "What way did the sky map tell you to go first: ";
-									cin >> gc1;
-									cout << endl;
-
-									if (gc1 != "S" && gc1 != "L" && gc1 != "R")
-										cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-
-								} while (gc1 != "S" && gc1 != "L" && gc1 != "R");
-
-								if (gc1 == cmmStr1)
-								{
-									cout << "It Looks like youre going the right way\n\n";
-
 									do
 									{
-										cout << "Which way are you going to go now: ";
-										cin >> gc2;
-										cout << endl << endl;
+										
+										cout << endl;
 
-										if (gc1 != "S" && gc1 != "L" && gc1 != "R")
+										cout<<"Which way are you going to go now: ";
+										cin >> game[i].gc1;
+										cout<<endl;
+
+										if (game[i].gc1 != "S" && game[i].gc1 != "L" && game[i].gc1 != "R")
 											cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-									} while (gc1 != "S" && gc1 != "L" && gc1 != "R");
 
-									if (gc2 == cmmStr2)
-									{
-										cout << "You're doing well, you may continue.\n\n";
+									}while (game[i].gc1 != "S" && game[i].gc1 != "L" && game[i].gc1 != "R");
 
-										do
-										{
-											cout << "Which way are you going to go now: ";
-											cin >> gc3;
-											cout << endl << endl;
+									if (game[i].gc1 == randomgen[i].cmmString)
+										delayed_out1(game1output[i].output);
+									else
+										break;
 
-											if (gc3 != "S" && gc3 != "L" && gc3 != "R")
-												cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-										} while (gc3 != "S" && gc3 != "L" && gc3 != "R");
-
-
-										if (gc3 == cmmStr3)
-										{
-											cout << "You seem to be remebering the map, keep going before you forget.\n\n";
-
-
-											do
-											{
-												cout << "Which way are you going to go now: ";
-												cin >> gc4;
-												cout << endl << endl;
-
-												if (gc4 != "S" && gc4 != "L" && gc4 != "R")
-													cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-
-											} while (gc4 != "S" && gc4 != "L" && gc4 != "R");
-
-											if (gc4 == cmmStr4)
-											{
-												cout << "Be glad this isnt a dead end. Youre getting closer.\n\n";
-
-												do
-												{
-													cout << "Which way are you going to go now: ";
-													cin >> gc5;
-													cout << endl << endl;
-
-													if (gc5 != "S" && gc5 != "L" && gc5 != "R")
-														cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-												} while (gc5 != "S" && gc5 != "L" && gc5 != "R");
-
-
-												if (gc5 == cmmStr5)
-												{
-													cout << "Good thing you didnt choose to go the other way, it mightve led you to your doom.\n\n";
-
-													do
-													{
-														cout << "Which way are you going to go now: ";
-														cin >> gc6;
-														cout << endl << endl;
-
-														if (gc6 != "S" && gc6 != "L" && gc6 != "R")
-															cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-													} while (gc6 != "S" && gc6 != "L" && gc6 != "R");
-
-													if (gc6 == cmmStr6)
-													{
-														cout << "It feels like youre close. KEEP GOING!!!\n\n";
-
-														do
-														{
-															cout << "Which way are you going to go now: ";
-															cin >> gc7;
-															cout << endl << endl;
-
-															if (gc7 != "S" && gc7 != "L" && gc7 != "R")
-																cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-														} while (gc7 != "S" && gc7 != "L" && gc7 != "R");
-
-														if (gc7 == cmmStr7)
-														{
-															cout << "Many would not have made it this far, May the odds be ever in your favor.\n\n";
-
-															do
-															{
-																cout << "Which way are you going to go now: ";
-																cin >> gc8;
-																cout << endl << endl;
-
-																if (gc8 != "S" && gc8 != "L" && gc8 != "R")
-																	cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-															} while (gc8 != "S" && gc8 != "L" && gc8 != "R");
-
-															if (gc8 == cmmStr8)
-															{
-																cout << "I hope your memory doesn't fail you now. Keep it up.\n\n";
-
-																do
-																{
-																	cout << "Which way are you going to go now: ";
-																	cin >> gc9;
-																	cout << endl << endl;
-
-																	if (gc9 != "S" && gc9 != "L" && gc9 != "R")
-																		cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-																} while (gc9 != "S" && gc9 != "L" && gc9 != "R");
-
-																if (gc9 == cmmStr9)
-																{
-
-
-
-																	delayed_out1("This is the moment of truth. If you go the wrong way now, you'll be lost forever.\n\n");
-
-
-																	do
-																	{
-																		cout << "Which way are you going to go now: ";
-																		cin >> gc10;
-																		cout << endl << endl;
-
-																		if (gc10 != "S" && gc10 != "L" && gc10 != "R")
-																			cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
-																	} while (gc10 != "S" && gc10 != "L" && gc10 != "R");
-
-
-
-																	if (gc10 == cmmStr10)
-																	{
-
-																		cout << "THE MAP WORKED. YOU'RE FREE.\n\nCONGRADULATIONS!!\n\n";
-
-																	}
-
-																}
-															}
-
-														}
-
-													}
-												}
-											}
-
-										}
-
-									}
 								}
+								
 
-								if (gc1 != cmmStr1 || gc2 != cmmStr2 || gc3 != cmmStr3 || gc4 != cmmStr4 || gc5 != cmmStr5 || gc6 != cmmStr6 || gc7 != cmmStr7 || gc8 != cmmStr8 || gc9 != cmmStr9 || gc10 != cmmStr10)
+
+								if (game[1].gc1 != randomgen[1].cmmString || game[2].gc1 != randomgen[2].cmmString || game[3].gc1 != randomgen[3].cmmString || game[4].gc1 != randomgen[4].cmmString || game[5].gc1 != randomgen[5].cmmString || game[6].gc1 != randomgen[6].cmmString || game[7].gc1 != randomgen[7].cmmString || game[8].gc1 != randomgen[8].cmmString || game[9].gc1 != randomgen[9].cmmString || game[10].gc1 != randomgen[10].cmmString)
 								{
 
 									delayed_out1("Game over. You Walked into a trap.\n\nI guess it is dangerous to go alone......\n\n\n");
@@ -390,23 +295,18 @@ int main()
 
 									cout << "Do you want to play again?\n1) Yes\t2) No\n";
 									cout << "Choice: ";
-									cin >> playagain;
+									cin >> Pg.game1;
 									cout << endl << endl;
 
-									if (playagain != '1' && playagain != '2')
+									if (Pg.game1 != '1' && Pg.game1 != '2')
 										cout << "Invalid. Must Choose Yes or No.\n\n";
 
-								} while (playagain != '1' && playagain != '2');
+								} while (Pg.game1 != '1' && Pg.game1 != '2');
 
 
 
 
-
-
-
-
-
-							} while (playagain == '1');
+							} while (Pg.game1 == '1');
 
 
 
@@ -424,7 +324,7 @@ int main()
 
 						}
 
-					} while (playagain == '2');
+					} while (Pg.game1 == '2');
 				}
 
 
@@ -502,6 +402,16 @@ int main()
 									do
 									{
 
+										int x = 1;
+										for (unsigned int i = 1; i < SIZE; ++i)
+										{
+											
+											randomgen[x].eString = genRandom1();
+											x++;
+										}
+
+
+										/*
 										for (unsigned int i = 1; i < 2; ++i)
 										{
 
@@ -519,19 +429,27 @@ int main()
 
 
 										}
+										*/
 
 
 
 										//show pattern to memorize
 
-										delayed_out(eStr1 + " " + eStr2 + " " + eStr3 + " " + eStr4 + " " + eStr5 + " " + eStr6 + " " + eStr7 + " " + eStr8 + " " + eStr9 + " " + eStr10);
+										delayed_out(randomgen[1].eString + " " + randomgen[2].eString + " " + randomgen[3].eString + " " + randomgen[4].eString + " " + randomgen[5].eString + " " + randomgen[6].eString + " " + randomgen[7].eString + " " + randomgen[8].eString + " " + randomgen[9].eString + " " + randomgen[10].eString);
 
 
 										//display answer choices
 										cout << "CHOICES:\n\n U D L R\n\n";
 
 										//prompt user to enter answers
-
+										
+										for (int i = 1; i < SIZE; i++)
+										{
+											cout << "Choice " << i << ": ";
+											cin >> game[i].gc2e;
+											cout << endl;
+										}
+										/*
 										cout << "Choice 1: ";
 										cin >> gc1;
 										cout << "Choice 2: ";
@@ -552,6 +470,7 @@ int main()
 										cin >> gc9;
 										cout << "Choice 10: ";
 										cin >> gc10;
+										*/
 
 										/*
 										std::transform(gc1.begin(), gc1.end(), gc1.begin(), std::ptr_fun<int, int>(std::toupper));
@@ -569,12 +488,14 @@ int main()
 
 
 										//calculate score
-
-										if (gc1 == eStr1)
+										for (int i = 1; i < SIZE; i++)
 										{
-											escore++;
+											if (game[i].gc2e == randomgen[i].eString)
+											{
+												score.g2e++;
+											}
 										}
-
+										/*
 										if (gc2 == eStr2)
 										{
 											escore++;
@@ -620,23 +541,24 @@ int main()
 											escore++;
 										}
 
+										*/
 										//display answer
 
 										//display score
 
-										if (escore == 10)
+										if (score.g2e == 10)
 										{
 											//display perfect
 											cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
 										}
 
-										else if (escore < 10 && escore >= 5)
+										else if (score.g2e < 10 && score.g2e >= 5)
 										{
 											//display good
 											cout << "GOOD JOB. You remembered most of the Letters.\n\n";
 										}
 
-										else if (escore < 5)
+										else if (score.g2e < 5)
 										{
 											//display bad
 											cout << "You didn't remember most of the letters. You should Try again.\n\n";
@@ -646,31 +568,43 @@ int main()
 
 
 
-										if (escore > ehighscore)
+										if (score.g2e > score.g2hse)
 										{
 
 											outfile.open("BRAIN GAME HIGHSCORES.txt", ios::app);
 
-											ehighscore = escore;
+											score.g2hse = score.g2e;
 
-											outfile << "CHANSEY MEMORY GAME||Diffuclty: Easy||" << "Player Name: " << ceName << "||" << "Score: " << ehighscore << "||Date: " << date << endl;
+											outfile << "CHANSEY MEMORY GAME||Diffuclty: Easy||" << "Player Name: " << ceName << "||" << "Score: " << score.g2hse << "||Date: " << date << endl;
 
 											outfile.close();
 										}
 
-										cout << "Your score: " << escore << "\tHighScore: " << ehighscore << endl;
-										cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
-										cout << "Correct Answers: " << eStr1 << " " << eStr2 << " " << eStr3 << " " << eStr4 << " " << eStr5 << " " << eStr6 << " " << eStr7 << " " << eStr8 << " " << eStr9 << " " << eStr10 << endl << endl;
+										cout << "Your score: " << score.g2e << "\tHighScore: " << score.g2hse << endl;
 
 
-										escore = 0;
+										cout << "Your Answers:    ";
+										for (int i = 1; i < SIZE; i++)
+										{
+											cout << game[i].gc2e << " ";
+										}
+										cout << endl << "Correct Answers: ";
+										for (int i = 1; i < SIZE; i++)
+										{
+											cout << randomgen[i].eString << " ";
+										}
+										//cout << "Your Answers: " << game[1].gc2e << " " << game[2].gc2e << " " << game[3].gc2e << " " << game[4].gc2e << " " << game[5].gc2e << " " << game[6].gc2e << " " << game[7].gc2e << " " << game[8].gc2e << " " << game[9].gc2e << " " << game[10].gc2e << endl;
+										//cout << "Correct Answers: " << randomgen[1].eString << " " << randomgen[2].eString << " " << randomgen[3].eString << " " << randomgen[4].eString << " " << randomgen[5].eString << " " << randomgen[6].eString << " " << randomgen[7].eString << " " << randomgen[8].eString << " " << randomgen[9].eString << " " << randomgen[10].eString << endl << endl;
+
+										
+										score.g2e = 0;
 
 										//prompt user to play again
 
 										do
 										{
-
-											cout << "Do you want to play this Difficulty again?\n1) Yes\t2) No\n";
+											
+											cout << "\n\nDo you want to play this Difficulty again?\n1) Yes\t2) No\n";
 											cout << "Choice: ";
 											cin >> playagain;
 											cout << endl << endl;
@@ -694,7 +628,14 @@ int main()
 
 								do
 								{
-
+									int x = 1;
+									for (unsigned int i = 1; i < SIZE; ++i)
+									{
+										
+										randomgen[x].mString = genRandom2();
+										x++;
+									}
+									/*
 									for (unsigned int i = 1; i < 2; ++i)
 									{
 
@@ -710,20 +651,26 @@ int main()
 										mStr10 = genRandom2();
 
 									}
-
+									*/
 
 
 
 									//show pattern to memorize
-
-									delayed_out(mStr1 + " " + mStr2 + " " + mStr3 + " " + mStr4 + " " + mStr5 + " " + mStr6 + " " + mStr7 + " " + mStr8 + " " + mStr9 + " " + mStr10);
+									delayed_out(randomgen[1].mString + " " + randomgen[2].mString + " " + randomgen[3].mString + " " + randomgen[4].mString + " " + randomgen[5].mString + " " + randomgen[6].mString + " " + randomgen[7].mString + " " + randomgen[8].mString + " " + randomgen[9].mString + " " + randomgen[10].mString);
 
 
 									//display answer choices
 									cout << "CHOICES:\n\n1 2 3 4 5 6 7 8 9 0 \n\n";
 
-									//prompt user to enter answers
 
+									//prompt user to enter answers
+									for (int i = 1; i < SIZE; i++)
+									{
+										cout << "Choice " << i << ": ";
+										cin >> game[i].gc2m;
+										cout << endl;
+									}
+									/*
 									cout << "Choice 1: ";
 									cin >> gc1;
 									cout << "Choice 2: ";
@@ -744,7 +691,7 @@ int main()
 									cin >> gc9;
 									cout << "Choice 10: ";
 									cin >> gc10;
-
+									*/
 									/*transform(gc1.begin(), gc1.end(), gc1.begin(), ::toupper);
 									transform(gc2.begin(), gc2.end(), gc2.begin(), ::toupper);
 									transform(gc3.begin(), gc3.end(), gc3.begin(), ::toupper);
@@ -758,7 +705,14 @@ int main()
 
 
 									//calculate score
-
+									for (int i = 1; i < SIZE; i++)
+									{
+										if (game[i].gc2m == randomgen[i].mString)
+										{
+											score.g2m++;
+										}
+									}
+									/*
 									if (gc1 == mStr1)
 									{
 										mscore++;
@@ -808,24 +762,24 @@ int main()
 									{
 										mscore++;
 									}
-
+									*/
 									//display answer
 
 									//display score
 
-									if (mscore == 10)
+									if (score.g2m == 10)
 									{
 										//display perfect
 										cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
 									}
 
-									else if (mscore < 10 && mscore >= 5)
+									else if (score.g2m < 10 && score.g2m >= 5)
 									{
 										//display good
 										cout << "GOOD JOB. You remembered most of the Letters.\n\n";
 									}
 
-									else if (mscore < 5)
+									else if (score.g2m < 5)
 									{
 										//display bad
 										cout << "You didn't remember most of the letters. You should Try again.\n\n";
@@ -834,31 +788,42 @@ int main()
 									//write highscore to file
 
 
-									if (mscore > mhighscore)
+									if (score.g2m > score.g2hsm)
 									{
 
 										outfile.open("BRAIN GAME HIGHSCORES.txt", ios::app);
 
-										mhighscore = mscore;
+										score.g2hsm = score.g2m;
 
-										outfile << "CHANSEY MEMORY GAME||Difficulty: Medium||" << "Player Name: " << ceName << "||" << "Score: " << mhighscore << "||Date: " << date << endl;
+										outfile << "CHANSEY MEMORY GAME||Difficulty: Medium||" << "Player Name: " << ceName << "||" << "Score: " << score.g2m << "||Date: " << date << endl;
 
 										outfile.close();
 									}
 
-									cout << "Your score: " << mscore << "\tHighScore: " << mhighscore << endl;
-									cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
-									cout << "Correct Answers: " << mStr1 << " " << mStr2 << " " << mStr3 << " " << mStr4 << " " << mStr5 << " " << mStr6 << " " << mStr7 << " " << mStr8 << " " << mStr9 << " " << mStr10 << endl << endl;
+									cout << "Your score: " << score.g2m << "\tHighScore: " << score.g2hsm << endl;
+
+									cout << "Your Answers:    ";
+									for (int i = 1; i < SIZE; i++)
+									{
+										cout << game[i].gc2m << " ";
+									}
+									cout << endl << "Correct Answers: ";
+									for (int i = 1; i < SIZE ; i++)
+									{
+										cout << randomgen[i].mString << " ";
+									}
+									// cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
+									// cout << "Correct Answers: " << mStr1 << " " << mStr2 << " " << mStr3 << " " << mStr4 << " " << mStr5 << " " << mStr6 << " " << mStr7 << " " << mStr8 << " " << mStr9 << " " << mStr10 << endl << endl;
+
+								
 
 
 
-
-
-									mscore = 0;
+									score.g2m = 0;
 									do
 									{
 
-										cout << "Do you want to play this Difficulty again?\n1) Yes\t2) No\n";
+										cout << "\n\nDo you want to play this Difficulty again?\n1) Yes\t2) No\n";
 										cout << "Choice: ";
 										cin >> playagain;
 										cout << endl << endl;
@@ -880,7 +845,14 @@ int main()
 							cout << endl << endl << endl;
 							do
 							{
-
+								int x = 1;
+								for (unsigned int i = 1; i < SIZE; ++i)
+								{
+									
+									randomgen[x].hString = genRandom3();
+									x++;
+								}
+								/*
 								for (unsigned int i = 1; i < 2; ++i)
 								{
 
@@ -897,17 +869,22 @@ int main()
 								}
 
 
-
+								*/
 								//show pattern to memorize
-
-								delayed_out(hStr1 + " " + hStr2 + " " + hStr3 + " " + hStr4 + " " + hStr5 + " " + hStr6 + " " + hStr7 + " " + hStr8 + " " + hStr9 + " " + hStr10);
+								delayed_out(randomgen[1].hString + " " + randomgen[2].hString + " " + randomgen[3].hString + " " + randomgen[4].hString + " " + randomgen[5].hString + " " + randomgen[6].hString + " " + randomgen[7].hString + " " + randomgen[8].hString + " " + randomgen[9].hString + " " + randomgen[10].hString);
 
 
 								//display answer choices
 								cout << "CHOICES:\n\n0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n\n";
 
 								//prompt user to enter answers
-
+								for (int i = 1; i < SIZE; i++)
+								{
+									cout << "Choice " << i << ": ";
+									cin >> game[i].gc2h;
+									cout << endl;
+								}
+								/*
 								cout << "Choice 1: ";
 								cin >> gc1;
 								cout << "Choice 2: ";
@@ -928,7 +905,7 @@ int main()
 								cin >> gc9;
 								cout << "Choice 10: ";
 								cin >> gc10;
-
+								*/
 
 								/*transform(gc1.begin(), gc1.end(), gc1.begin(), ::toupper);
 								transform(gc2.begin(), gc2.end(), gc2.begin(), ::toupper);
@@ -943,6 +920,14 @@ int main()
 
 								//calculate score
 
+								for (int i = 1; i < SIZE; i++)
+								{
+									if (game[i].gc2h == randomgen[i].hString)
+									{
+										score.g2h++;
+									}
+								}
+								/*
 								if (gc1 == hStr1)
 								{
 									hscore++;
@@ -992,24 +977,24 @@ int main()
 								{
 									hscore++;
 								}
-
+								*/
 								//display answer
 
 								//display score
 
-								if (hscore == 10)
+								if (score.g2h == 10)
 								{
 									//display perfect
 									cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
 								}
 
-								else if (hscore < 10 && hscore >= 5)
+								else if (score.g2h < 10 && score.g2h >= 5)
 								{
 									//display good
 									cout << "GOOD JOB. You remembered most of the Letters.\n\n";
 								}
 
-								else if (hscore < 5)
+								else if (score.g2h < 5)
 								{
 									//display bad
 									cout << "You didn't remember most of the letters. You should Try again.\n\n";
@@ -1019,32 +1004,44 @@ int main()
 
 
 
-								if (hscore > hhighscore)
+								if (score.g2h > score.g2hsh)
 								{
 									outfile.open("BRAIN GAME HIGHSCORES.txt", ios::app);
 
-									hhighscore = hscore;
+									score.g2hsh = score.g2h;
 
-									outfile << "CHANSEY MEMORY GAME||Difficulty: Hard||" << "Player Name: " << ceName << "||" << "Score: " << hhighscore << "||Date: " << date << endl;
+									outfile << "CHANSEY MEMORY GAME||Difficulty: Hard||" << "Player Name: " << ceName << "||" << "Score: " << score.g2h << "||Date: " << date << endl;
 
 									outfile.close();
 								}
 
-								cout << "Your score: " << hscore << "\tHighScore: " << hhighscore << endl;
-								cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
-								cout << "Correct Answers: " << hStr1 << " " << hStr2 << " " << hStr3 << " " << hStr4 << " " << hStr5 << " " << hStr6 << " " << hStr7 << " " << hStr8 << " " << hStr9 << " " << hStr10 << endl << endl;
+								cout << "Your score: " << score.g2h << "\tHighScore: " << score.g2hsh << endl;
+
+								cout << "Your Answers:    ";
+								for (int i = 1; i < SIZE; i++)
+								{
+									cout << game[i].gc2h << " ";
+								}
+								cout << endl << "Correct Answers: ";
+								for (int i = 1; i < SIZE; i++)
+								{
+									cout << randomgen[i].hString << " ";
+								}
+								
+								//cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
+								//cout << "Correct Answers: " << hStr1 << " " << hStr2 << " " << hStr3 << " " << hStr4 << " " << hStr5 << " " << hStr6 << " " << hStr7 << " " << hStr8 << " " << hStr9 << " " << hStr10 << endl << endl;
 
 
 
 
 
-								hscore = 0;
+								score.g2h = 0;
 
 
 								do
 								{
 
-									cout << "Do you want to play this Difficulty again?\n1) Yes\t2) No\n";
+									cout << "\n\nDo you want to play this Difficulty again?\n1) Yes\t2) No\n";
 									cout << "Choice: ";
 									cin >> playagain;
 									cout << endl << endl;

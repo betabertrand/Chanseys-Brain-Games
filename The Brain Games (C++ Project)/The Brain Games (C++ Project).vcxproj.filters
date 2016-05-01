@@ -20,7 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chansey functions.h">
+    <ClInclude Include="chanseyfunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chanseystructure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

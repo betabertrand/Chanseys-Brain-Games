@@ -1,1 +1,7 @@
 CHANSEY MEMORY GAME||Difficulty: Hard||Player Name: 2||Score: 1||Date: 03/12/16
+CHANSEY MEMORY GAME||Diffuclty: Easy||Player Name: b||Score: 9||Date: 05/01/16
+CHANSEY MEMORY GAME||Difficulty: Medium||Player Name: B||Score: 4||Date: 05/01/16
+CHANSEY MEMORY GAME||Diffuclty: Easy||Player Name: b||Score: 4||Date: 05/01/16
+CHANSEY MEMORY GAME||Diffuclty: Easy||Player Name: 1||Score: 2||Date: 05/01/16
+CHANSEY MEMORY GAME||Diffuclty: Easy||Player Name: 2||Score: 2||Date: 05/01/16
+CHANSEY MEMORY GAME||Diffuclty: Easy||Player Name: S||Score: 4||Date: 05/01/16
