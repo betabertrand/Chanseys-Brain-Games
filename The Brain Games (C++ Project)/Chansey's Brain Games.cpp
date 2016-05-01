@@ -39,11 +39,10 @@ int main()
 
 	//declare and initialize variables
 
-	//string Str1=" ", Str2=" ", Str3=" ", Str4=" ", Str5=" ", Str6=" ", Str7=" ", Str8=" ", Str9=" ", Str10=" ";
 	//for chansey game
 	char menuchoice = ' ', difchoice2 = ' ', playagain= ' ';
 	string ceName;
-	//int escore = 0, mscore = 0, hscore = 0, ehighscore = 0, mhighscore = 0, hhighscore = 0, month = 0, day = 0, year = 0;
+
 	Game1 game1output[SIZE];
 	Random randomgen[SIZE];
 	Playagain Pg;
@@ -68,71 +67,10 @@ int main()
 
 
 
-
-
-
-	/*
-	std::string cmmStr1;
-	std::string cmmStr2;
-	std::string cmmStr3;
-	std::string cmmStr4;
-	std::string cmmStr5;
-	std::string cmmStr6;
-	std::string cmmStr7;
-	std::string cmmStr8;
-	std::string cmmStr9;
-	std::string cmmStr10;
-	*/
-
-	
-
-
 	std::string cmmstory;
 	std::string cmmName;
 	std::string forfun;
 
-	/*
-	std::string eStr1;
-	std::string eStr2;
-	std::string eStr3;
-	std::string eStr4;
-	std::string eStr5;
-	std::string eStr6;
-	std::string eStr7;
-	std::string eStr8;
-	std::string eStr9;
-	std::string eStr10;
-	*/
-
-	//Random.eString[SIZE]
-
-	/*
-	std::string mStr1;
-	std::string mStr2;
-	std::string mStr3;
-	std::string mStr4;
-	std::string mStr5;
-	std::string mStr6;
-	std::string mStr7;
-	std::string mStr8;
-	std::string mStr9;
-	std::string mStr10;
-
-	std::string hStr1;
-	std::string hStr2;
-	std::string hStr3;
-	std::string hStr4;
-	std::string hStr5;
-	std::string hStr6;
-	std::string hStr7;
-	std::string hStr8;
-	std::string hStr9;
-	std::string hStr10;
-	*/
-
-	//Random.mString[SIZE]
-
-	//Random.hString[SIZE]
 
 
 	//write file pointer
@@ -235,20 +173,6 @@ int main()
 								}
 
 
-								/*
-								cmmStr1 = genRandom4();
-								cmmStr2 = genRandom4();
-								cmmStr3 = genRandom4();
-								cmmStr4 = genRandom4();
-								cmmStr5 = genRandom4();
-								cmmStr6 = genRandom4();
-								cmmStr7 = genRandom4();
-								cmmStr8 = genRandom4();
-								cmmStr9 = genRandom4();
-								cmmStr10 = genRandom4();
-								*/
-
-
 								delayed_out1("And so ");
 								delayed_out1(ceName);
 								delayed_out1(" Your Journey Begins......");
@@ -328,7 +252,7 @@ int main()
 				}
 
 
-			//} while (menuchoice == '3');
+		
 			
 			
 					
@@ -411,27 +335,7 @@ int main()
 										}
 
 
-										/*
-										for (unsigned int i = 1; i < 2; ++i)
-										{
-
-
-											eStr1 = genRandom1();
-											eStr2 = genRandom1();
-											eStr3 = genRandom1();
-											eStr4 = genRandom1();
-											eStr5 = genRandom1();
-											eStr6 = genRandom1();
-											eStr7 = genRandom1();
-											eStr8 = genRandom1();
-											eStr9 = genRandom1();
-											eStr10 = genRandom1();
-
-
-										}
-										*/
-
-
+									
 
 										//show pattern to memorize
 
@@ -449,43 +353,7 @@ int main()
 											cin >> game[i].gc2e;
 											cout << endl;
 										}
-										/*
-										cout << "Choice 1: ";
-										cin >> gc1;
-										cout << "Choice 2: ";
-										cin >> gc2;
-										cout << "Choice 3: ";
-										cin >> gc3;
-										cout << "Choice 4: ";
-										cin >> gc4;
-										cout << "Choice 5: ";
-										cin >> gc5;
-										cout << "Choice 6: ";
-										cin >> gc6;
-										cout << "Choice 7: ";
-										cin >> gc7;
-										cout << "Choice 8: ";
-										cin >> gc8;
-										cout << "Choice 9: ";
-										cin >> gc9;
-										cout << "Choice 10: ";
-										cin >> gc10;
-										*/
-
-										/*
-										std::transform(gc1.begin(), gc1.end(), gc1.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc2.begin(), gc2.end(), gc2.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc3.begin(), gc3.end(), gc3.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc4.begin(), gc4.end(), gc4.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc5.begin(), gc5.end(), gc5.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc6.begin(), gc6.end(), gc6.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc7.begin(), gc7.end(), gc7.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc8.begin(), gc8.end(), gc8.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc9.begin(), gc8.end(), gc9.begin(), std::ptr_fun<int, int>(std::toupper));
-										std::transform(gc10.begin(), gc10.end(), gc10.begin(), std::ptr_fun<int, int>(std::toupper));
-										*/
-
-
+									
 
 										//calculate score
 										for (int i = 1; i < SIZE; i++)
@@ -495,53 +363,7 @@ int main()
 												score.g2e++;
 											}
 										}
-										/*
-										if (gc2 == eStr2)
-										{
-											escore++;
-										}
-
-										if (gc3 == eStr3)
-										{
-											escore++;
-										}
-
-										if (gc4 == eStr4)
-										{
-											escore++;
-										}
-
-										if (gc5 == eStr5)
-										{
-											escore++;
-										}
-
-										if (gc6 == eStr6)
-										{
-											escore++;
-										}
-
-										if (gc7 == eStr7)
-										{
-											escore++;
-										}
-
-										if (gc8 == eStr8)
-										{
-											escore++;
-										}
-
-										if (gc9 == eStr9)
-										{
-											escore++;
-										}
-
-										if (gc10 == eStr10)
-										{
-											escore++;
-										}
-
-										*/
+										
 										//display answer
 
 										//display score
@@ -593,9 +415,6 @@ int main()
 										{
 											cout << randomgen[i].eString << " ";
 										}
-										//cout << "Your Answers: " << game[1].gc2e << " " << game[2].gc2e << " " << game[3].gc2e << " " << game[4].gc2e << " " << game[5].gc2e << " " << game[6].gc2e << " " << game[7].gc2e << " " << game[8].gc2e << " " << game[9].gc2e << " " << game[10].gc2e << endl;
-										//cout << "Correct Answers: " << randomgen[1].eString << " " << randomgen[2].eString << " " << randomgen[3].eString << " " << randomgen[4].eString << " " << randomgen[5].eString << " " << randomgen[6].eString << " " << randomgen[7].eString << " " << randomgen[8].eString << " " << randomgen[9].eString << " " << randomgen[10].eString << endl << endl;
-
 										
 										score.g2e = 0;
 
@@ -635,24 +454,7 @@ int main()
 										randomgen[x].mString = genRandom2();
 										x++;
 									}
-									/*
-									for (unsigned int i = 1; i < 2; ++i)
-									{
-
-										mStr1 = genRandom2();
-										mStr2 = genRandom2();
-										mStr3 = genRandom2();
-										mStr4 = genRandom2();
-										mStr5 = genRandom2();
-										mStr6 = genRandom2();
-										mStr7 = genRandom2();
-										mStr8 = genRandom2();
-										mStr9 = genRandom2();
-										mStr10 = genRandom2();
-
-									}
-									*/
-
+								
 
 
 									//show pattern to memorize
@@ -670,39 +472,7 @@ int main()
 										cin >> game[i].gc2m;
 										cout << endl;
 									}
-									/*
-									cout << "Choice 1: ";
-									cin >> gc1;
-									cout << "Choice 2: ";
-									cin >> gc2;
-									cout << "Choice 3: ";
-									cin >> gc3;
-									cout << "Choice 4: ";
-									cin >> gc4;
-									cout << "Choice 5: ";
-									cin >> gc5;
-									cout << "Choice 6: ";
-									cin >> gc6;
-									cout << "Choice 7: ";
-									cin >> gc7;
-									cout << "Choice 8: ";
-									cin >> gc8;
-									cout << "Choice 9: ";
-									cin >> gc9;
-									cout << "Choice 10: ";
-									cin >> gc10;
-									*/
-									/*transform(gc1.begin(), gc1.end(), gc1.begin(), ::toupper);
-									transform(gc2.begin(), gc2.end(), gc2.begin(), ::toupper);
-									transform(gc3.begin(), gc3.end(), gc3.begin(), ::toupper);
-									transform(gc4.begin(), gc4.end(), gc4.begin(), ::toupper);
-									transform(gc5.begin(), gc5.end(), gc5.begin(), ::toupper);
-									transform(gc6.begin(), gc6.end(), gc6.begin(), ::toupper);
-									transform(gc7.begin(), gc7.end(), gc7.begin(), ::toupper);
-									transform(gc8.begin(), gc8.end(), gc8.begin(), ::toupper);
-									transform(gc9.begin(), gc8.end(), gc9.begin(), ::toupper);
-									transform(gc10.begin(), gc10.end(), gc10.begin(), ::toupper);*/
-
+							
 
 									//calculate score
 									for (int i = 1; i < SIZE; i++)
@@ -712,57 +482,7 @@ int main()
 											score.g2m++;
 										}
 									}
-									/*
-									if (gc1 == mStr1)
-									{
-										mscore++;
-									}
-
-									if (gc2 == mStr2)
-									{
-										mscore++;
-									}
-
-									if (gc3 == mStr3)
-									{
-										mscore++;
-									}
-
-									if (gc4 == mStr4)
-									{
-										mscore++;
-									}
-
-									if (gc5 == mStr5)
-									{
-										mscore++;
-									}
-
-									if (gc6 == mStr6)
-									{
-										mscore++;
-									}
-
-									if (gc7 == mStr7)
-									{
-										mscore++;
-									}
-
-									if (gc8 == mStr8)
-									{
-										mscore++;
-									}
-
-									if (gc9 == mStr9)
-									{
-										mscore++;
-									}
-
-									if (gc10 == mStr10)
-									{
-										mscore++;
-									}
-									*/
+									
 									//display answer
 
 									//display score
@@ -812,11 +532,7 @@ int main()
 									{
 										cout << randomgen[i].mString << " ";
 									}
-									// cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
-									// cout << "Correct Answers: " << mStr1 << " " << mStr2 << " " << mStr3 << " " << mStr4 << " " << mStr5 << " " << mStr6 << " " << mStr7 << " " << mStr8 << " " << mStr9 << " " << mStr10 << endl << endl;
-
 								
-
 
 
 									score.g2m = 0;
@@ -852,24 +568,7 @@ int main()
 									randomgen[x].hString = genRandom3();
 									x++;
 								}
-								/*
-								for (unsigned int i = 1; i < 2; ++i)
-								{
-
-									hStr1 = genRandom3();
-									hStr2 = genRandom3();
-									hStr3 = genRandom3();
-									hStr4 = genRandom3();
-									hStr5 = genRandom3();
-									hStr6 = genRandom3();
-									hStr7 = genRandom3();
-									hStr8 = genRandom3();
-									hStr9 = genRandom3();
-									hStr10 = genRandom3();
-								}
-
-
-								*/
+							
 								//show pattern to memorize
 								delayed_out(randomgen[1].hString + " " + randomgen[2].hString + " " + randomgen[3].hString + " " + randomgen[4].hString + " " + randomgen[5].hString + " " + randomgen[6].hString + " " + randomgen[7].hString + " " + randomgen[8].hString + " " + randomgen[9].hString + " " + randomgen[10].hString);
 
@@ -884,40 +583,7 @@ int main()
 									cin >> game[i].gc2h;
 									cout << endl;
 								}
-								/*
-								cout << "Choice 1: ";
-								cin >> gc1;
-								cout << "Choice 2: ";
-								cin >> gc2;
-								cout << "Choice 3: ";
-								cin >> gc3;
-								cout << "Choice 4: ";
-								cin >> gc4;
-								cout << "Choice 5: ";
-								cin >> gc5;
-								cout << "Choice 6: ";
-								cin >> gc6;
-								cout << "Choice 7: ";
-								cin >> gc7;
-								cout << "Choice 8: ";
-								cin >> gc8;
-								cout << "Choice 9: ";
-								cin >> gc9;
-								cout << "Choice 10: ";
-								cin >> gc10;
-								*/
-
-								/*transform(gc1.begin(), gc1.end(), gc1.begin(), ::toupper);
-								transform(gc2.begin(), gc2.end(), gc2.begin(), ::toupper);
-								transform(gc3.begin(), gc3.end(), gc3.begin(), ::toupper);
-								transform(gc4.begin(), gc4.end(), gc4.begin(), ::toupper);
-								transform(gc5.begin(), gc5.end(), gc5.begin(), ::toupper);
-								transform(gc6.begin(), gc6.end(), gc6.begin(), ::toupper);
-								transform(gc7.begin(), gc7.end(), gc7.begin(), ::toupper);
-								transform(gc8.begin(), gc8.end(), gc8.begin(), ::toupper);
-								transform(gc9.begin(), gc8.end(), gc9.begin(), ::toupper);
-								transform(gc10.begin(), gc10.end(), gc10.begin(), ::toupper);*/
-
+								
 								//calculate score
 
 								for (int i = 1; i < SIZE; i++)
@@ -927,57 +593,7 @@ int main()
 										score.g2h++;
 									}
 								}
-								/*
-								if (gc1 == hStr1)
-								{
-									hscore++;
-								}
-
-								if (gc2 == hStr2)
-								{
-									hscore++;
-								}
-
-								if (gc3 == hStr3)
-								{
-									hscore++;
-								}
-
-								if (gc4 == hStr4)
-								{
-									hscore++;
-								}
-
-								if (gc5 == hStr5)
-								{
-									hscore++;
-								}
-
-								if (gc6 == hStr6)
-								{
-									hscore++;
-								}
-
-								if (gc7 == hStr7)
-								{
-									hscore++;
-								}
-
-								if (gc8 == hStr8)
-								{
-									hscore++;
-								}
-
-								if (gc9 == hStr9)
-								{
-									hscore++;
-								}
-
-								if (gc10 == hStr10)
-								{
-									hscore++;
-								}
-								*/
+							
 								//display answer
 
 								//display score
@@ -1028,11 +644,7 @@ int main()
 									cout << randomgen[i].hString << " ";
 								}
 								
-								//cout << "Your Answers: " << gc1 << " " << gc2 << " " << gc3 << " " << gc4 << " " << gc5 << " " << gc6 << " " << gc7 << " " << gc8 << " " << gc9 << " " << gc10 << endl;
-								//cout << "Correct Answers: " << hStr1 << " " << hStr2 << " " << hStr3 << " " << hStr4 << " " << hStr5 << " " << hStr6 << " " << hStr7 << " " << hStr8 << " " << hStr9 << " " << hStr10 << endl << endl;
-
-
-
+							
 
 
 								score.g2h = 0;
