@@ -1,3 +1,3 @@
 ﻿  Chansey's Brain Games.cpp
-c:\users\bertrand\documents\code\chansey\the brain games (c++ project)\chansey's brain games.cpp(56): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\bertrand\documents\code\chansey\the brain games (c++ project)\chansey's brain games.cpp(55): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   The Brain Games (C++ Project).vcxproj -> C:\Users\Bertrand\Documents\CODE\chansey\x64\Debug\Chansey's Brain Games (C++ Project).exe
