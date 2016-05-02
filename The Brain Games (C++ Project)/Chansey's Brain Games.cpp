@@ -49,10 +49,9 @@ int main()
 	Gamechoice game[SIZE];
 	Gamescore score;
 
-
-
-	//do delayed output and random string generator code
-	srand(time(0));
+	std::string cmmstory;
+	std::string cmmName;
+	std::string forfun;
 
 	game1output[1].output="It Looks like youre going the right way\n\n";
 	game1output[2].output="You're doing well, you may continue.\n\n";
@@ -66,29 +65,22 @@ int main()
 	game1output[10].output="THE MAP WORKED. YOU'RE FREE.\n\nCONGRADULATIONS!!\n\n";
 
 
-
-	std::string cmmstory;
-	std::string cmmName;
-	std::string forfun;
-
+	srand(time(0));
 
 
 	//write file pointer
 	ofstream outfile;
 
 
-	//introduce program
+	
 
 	//date stuff
 	char date[9];
 	_strdate_s(date);
 
-
-	
 	cout << date << endl;
 
-
-
+	//introduce program
 	cout << "\nWELCOME TO \nCHANSEY'S BRAIN GAMES!\n\n";
 
 
@@ -97,8 +89,7 @@ int main()
 	{
 		do
 		{
-			//do
-			//
+			
 				cout << "Game:\n1) Chansey's Mystery Maze\n2) Chansey's Memory Game\n3) Chansey's Endless Memory\n\nAdditional Options:\n4) About\n5) Exit\n\n";
 
 				cout << "Choice: ";
@@ -113,6 +104,8 @@ int main()
 				if (menuchoice == '1')
 
 				{
+
+
 
 					do
 					{
@@ -167,7 +160,7 @@ int main()
 								int x = 1;
 								for (unsigned int i = 1; i < SIZE; ++i)
 								{
-									
+
 									randomgen[x].cmmString = genRandom4();
 									x++;
 								}
@@ -183,21 +176,21 @@ int main()
 
 								cout << "SkyMap Key:   S= Straight   L= Left    R= Right\n\n";
 
-								for (int i=1; i < SIZE; i++)
+								for (int i = 1; i < SIZE; i++)
 								{
 									do
 									{
-										
+
 										cout << endl;
 
-										cout<<"Which way are you going to go now: ";
+										cout << "Which way are you going to go now: ";
 										cin >> game[i].gc1;
-										cout<<endl;
+										cout << endl;
 
 										if (game[i].gc1 != "S" && game[i].gc1 != "L" && game[i].gc1 != "R")
 											cout << "Invalid, the sky map only had the options Left Right and Straight.\n\n";
 
-									}while (game[i].gc1 != "S" && game[i].gc1 != "L" && game[i].gc1 != "R");
+									} while (game[i].gc1 != "S" && game[i].gc1 != "L" && game[i].gc1 != "R");
 
 									if (game[i].gc1 == randomgen[i].cmmString)
 										delayed_out1(game1output[i].output);
@@ -205,7 +198,7 @@ int main()
 										break;
 
 								}
-								
+
 
 
 								if (game[1].gc1 != randomgen[1].cmmString || game[2].gc1 != randomgen[2].cmmString || game[3].gc1 != randomgen[3].cmmString || game[4].gc1 != randomgen[4].cmmString || game[5].gc1 != randomgen[5].cmmString || game[6].gc1 != randomgen[6].cmmString || game[7].gc1 != randomgen[7].cmmString || game[8].gc1 != randomgen[8].cmmString || game[9].gc1 != randomgen[9].cmmString || game[10].gc1 != randomgen[10].cmmString)
@@ -231,30 +224,10 @@ int main()
 
 
 							} while (Pg.game1 == '1');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 						}
 
 					} while (Pg.game1 == '2');
 				}
-
-
-		
-			
-			
 					
 			if (menuchoice == '2')
 			{
@@ -365,26 +338,9 @@ int main()
 										}
 										
 										//display answer
-
 										//display score
 
-										if (score.g2e == 10)
-										{
-											//display perfect
-											cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
-										}
-
-										else if (score.g2e < 10 && score.g2e >= 5)
-										{
-											//display good
-											cout << "GOOD JOB. You remembered most of the Letters.\n\n";
-										}
-
-										else if (score.g2e < 5)
-										{
-											//display bad
-											cout << "You didn't remember most of the letters. You should Try again.\n\n";
-										}
+										DisplayScore(score.g2e);
 
 										//write highscore to file
 
@@ -486,26 +442,8 @@ int main()
 									//display answer
 
 									//display score
-
-									if (score.g2m == 10)
-									{
-										//display perfect
-										cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
-									}
-
-									else if (score.g2m < 10 && score.g2m >= 5)
-									{
-										//display good
-										cout << "GOOD JOB. You remembered most of the Letters.\n\n";
-									}
-
-									else if (score.g2m < 5)
-									{
-										//display bad
-										cout << "You didn't remember most of the letters. You should Try again.\n\n";
-									}
-
-									//write highscore to file
+									DisplayScore(score.g2m);
+				
 
 
 									if (score.g2m > score.g2hsm)
@@ -597,25 +535,8 @@ int main()
 								//display answer
 
 								//display score
-
-								if (score.g2h == 10)
-								{
-									//display perfect
-									cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
-								}
-
-								else if (score.g2h < 10 && score.g2h >= 5)
-								{
-									//display good
-									cout << "GOOD JOB. You remembered most of the Letters.\n\n";
-								}
-
-								else if (score.g2h < 5)
-								{
-									//display bad
-									cout << "You didn't remember most of the letters. You should Try again.\n\n";
-								}
-
+								DisplayScore(score.g2h);
+							
 								//write highscore to file
 
 

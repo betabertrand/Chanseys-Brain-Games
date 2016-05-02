@@ -2,6 +2,7 @@
 
 
 
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -27,6 +28,12 @@ int stringLength = sizeof(UDLR) - 1;
 int stringLength1 = sizeof(allnumb) - 1;
 int stringLength2 = sizeof(allchar) - 1;
 int stringLength3 = sizeof(SLR) - 1;
+
+
+
+
+void DisplayScore(int);
+
 
 char genRandom1()
 {
@@ -86,5 +93,26 @@ void delayed_out1(const std::string& message,
 	{
 		std::cout << message[msgIdx++];
 		std::this_thread::sleep_for(letter_delay);
+	}
+}
+
+void DisplayScore(int x)
+{
+	if (x == 10)
+	{
+		//display perfect
+		cout << "PERFECT!!!!\nYOU SCORED EVERYTHING CORRECTLY\n\n";
+	}
+	else if (x < 10 && x >= 5)
+	{
+		//display good
+		cout << "GOOD JOB. You remembered most of the Letters.\n\n";
+
+	}
+
+	else if (x < 5)
+	{
+		//display bad
+		cout << "You didn't remember most of the letters. You should Try again.\n\n";
 	}
 }
