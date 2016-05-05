@@ -40,9 +40,10 @@ int main()
 	//declare and initialize variables
 
 	//for chansey game
-	char menuchoice = ' ', difchoice2 = ' ', playagain= ' ';
-	string ceName;
-
+	char menuchoice = ' ', difchoice2 = ' ', playagain = ' ';
+	int Num=0;
+	string ceName[3];
+	
 	Game1 game1output[SIZE];
 	Random randomgen[SIZE];
 	Playagain Pg;
@@ -70,6 +71,7 @@ int main()
 
 	//write file pointer
 	ofstream outfile;
+	ofstream infile;
 
 
 	
@@ -90,7 +92,7 @@ int main()
 		do
 		{
 			
-				cout << "Game:\n1) Chansey's Mystery Maze\n2) Chansey's Memory Game\n3) Chansey's Endless Memory\n\nAdditional Options:\n4) About\n5) Exit\n\n";
+				cout << "Game:\n1) Chansey's Mystery Maze\n2) Chansey's Memory Game\n\nAdditional Options:\n5) Chansey's Endless Memory\n6) About\n7) Exit\n\n";
 
 				cout << "Choice: ";
 				cin >> menuchoice;
@@ -146,7 +148,7 @@ int main()
 
 
 							cout << "Enter your First Name: ";
-							cin >> ceName;
+							cin >> ceName[0];
 							cout << endl << endl;
 
 
@@ -167,7 +169,7 @@ int main()
 
 
 								delayed_out1("And so ");
-								delayed_out1(ceName);
+								delayed_out1(ceName[0]);
 								delayed_out1(" Your Journey Begins......");
 								cout << endl << endl;
 
@@ -293,7 +295,7 @@ int main()
 									//Prompt user to enter name for Highscore
 
 									cout << "Enter First Name: ";
-									cin >> ceName;
+									cin >> ceName[1];
 									cout << endl << endl << endl;
 
 									do
@@ -398,7 +400,7 @@ int main()
 							{
 
 								cout << "Enter First Name: ";
-								cin >> ceName;
+								cin >> ceName[2];
 								cout << endl << endl << endl;
 
 								do
@@ -495,7 +497,7 @@ int main()
 						{
 
 							cout << "Enter First Name: ";
-							cin >> ceName;
+							cin >> ceName[3];
 							cout << endl << endl << endl;
 							do
 							{
@@ -538,19 +540,18 @@ int main()
 								DisplayScore(score.g2h);
 							
 								//write highscore to file
-
-
-
 								if (score.g2h > score.g2hsh)
 								{
+
 									outfile.open("BRAIN GAME HIGHSCORES.txt", ios::app);
 
 									score.g2hsh = score.g2h;
 
-									outfile << "CHANSEY MEMORY GAME||Difficulty: Hard||" << "Player Name: " << ceName << "||" << "Score: " << score.g2h << "||Date: " << date << endl;
+									outfile << "CHANSEY MEMORY GAME||Difficulty: Medium||" << "Player Name: " << ceName << "||" << "Score: " << score.g2h << "||Date: " << date << endl;
 
 									outfile.close();
 								}
+							
 
 								cout << "Your score: " << score.g2h << "\tHighScore: " << score.g2hsh << endl;
 
@@ -604,14 +605,19 @@ int main()
 			}
 		
 		} while (menuchoice == '3');
-		if (menuchoice == '3')
+
+	
+		if (menuchoice == '5')
+
 		{
-			//play chanseys endless memory
-			cout << "CHANSEY'S ENDLESS MEMORY COMMING SOON.\nSTAY TUNED AND SUPPORT THE DEVELOPERS!!!!\n\n";
+		
+				cout << endl;
+				//play chanseys endless memory
+				cout << "CHANSEY'S ENDLESS MEMORY COMMING SOON.\nSTAY TUNED AND SUPPORT THE DEVELOPERS!!!!\n\n";
 
-		}
+			}
 
-		if (menuchoice == '4')
+		if (menuchoice == '6')
 
 		{
 			//show about
@@ -620,7 +626,7 @@ int main()
 			cout << "Game Testers: Michael and Chase.\n\n";
 		}
 
-		if (menuchoice == '5')
+		if (menuchoice == '7')
 		{
 			//display exit
 			cout << "I HOPE YOU ENJOYED.\nGOODBYE\n\n\n";
